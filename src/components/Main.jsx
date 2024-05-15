@@ -12,7 +12,15 @@ export default function Main() {
       setMovies(response.data.results);
     });
   }, []);
-  console.log(movies);
+  // console.log(movies);
+
+  const truncateString = (str, n) => {
+    if (str?.length > n) {
+      return str.slice(0, n) + "...";
+    } else {
+      return str;
+    }
+  };
 
   return (
     <div className="w-full h-[550px] text-white">
@@ -37,7 +45,7 @@ export default function Main() {
             Released : {movie?.release_date}{" "}
           </p>
           <p className="w-full md:max-w-[70%] lg:max-w-[50%] xl:max-w-[40%]">
-            {movie?.overview}{" "}
+            {truncateString(movie?.overview, 150)}
           </p>
         </div>
       </div>
