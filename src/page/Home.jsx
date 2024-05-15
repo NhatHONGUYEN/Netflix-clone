@@ -6,11 +6,27 @@ export default function Home() {
   return (
     <>
       <Main />
-      <RowComponent title="Up Coming" fetchURL={requests.requestUpComing} />
-      <RowComponent title="Popular" fetchURL={requests.requestPopular} />
-      <RowComponent title="TopRated" fetchURL={requests.requestTopRated} />
-      <RowComponent title="Trending" fetchURL={requests.requestTrending} />
-      <RowComponent title="Anime" fetchURL={requests.requestAnime} />
+      <RowComponent
+        rowID="1"
+        title="Up Coming"
+        fetchURL={requests.requestUpComing}
+      />
+      <RowComponent
+        rowID="2"
+        title="Popular"
+        fetchURL={requests.requestPopular}
+      />
+      <RowComponent
+        rowID="3"
+        title="TopRated"
+        fetchURL={requests.requestTopRated}
+      />
+      <RowComponent
+        rowID="4"
+        title="Trending"
+        fetchURL={requests.requestTrending}
+      />
+      <RowComponent rowID="5" title="Anime" fetchURL={requests.requestAnime} />
     </>
   );
 }

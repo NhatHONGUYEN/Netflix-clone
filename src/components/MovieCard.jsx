@@ -15,7 +15,7 @@ export default function MovieCard({ movie }) {
         alt={movie?.title}
       />
       <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0 hover:opacity-100 text-white">
-        <p className="flex justify-center items-center w-full h-full text-xs md:text-sm text-gray-300">
+        <p className=" whitespace-normal flex justify-center items-center w-full h-full text-xs md:text-sm text-gray-300 ">
           {movie?.title}
         </p>
         <p>
