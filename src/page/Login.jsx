@@ -9,11 +9,11 @@ export default function Login() {
   const { user, logIn } = UserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
     try {
-      logIn(email, password);
+      await logIn(email, password);
       navigate("/");
     } catch (error) {
       console.log(error);
@@ -33,6 +33,7 @@ export default function Login() {
         <div className="rounded max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
           <div className="max-w-[320px] mx-auto py-16">
             <div className="text-3xl font-bold  ">Sign In</div>
+            {error ? <p className="text-red-600 p-3 my-3">{error}</p> : null}
             <form className="w-full flex flex-col py-4">
               <input
                 onChange={(e) => setEmail(e.target.value)}
@@ -63,11 +64,9 @@ export default function Login() {
               </div>
 
               <p className="py-8">
-                <span className="text-gray-600 mr-2">
-                  Already subscribed to Netflix?
-                </span>
+                <span className="text-gray-600 mr-2">New to Netflix?</span>
 
-                <Link to="/login">Sign In</Link>
+                <Link to="/login">Sign Up</Link>
               </p>
             </form>
           </div>

@@ -9,16 +9,16 @@ export default function SignUp() {
   const { user, signUp } = UserAuth();
   const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate("/");
+    try {
+      await signUp(email, password);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setError("Failed to sign up");
+    }
   };
-  try {
-    signUp(email, password);
-  } catch (error) {
-    console.log(error);
-    setError("Failed to sign up");
-  }
 
   return (
     <div className="w-full h-screen">
@@ -31,7 +31,7 @@ export default function SignUp() {
       <div className="fixed w-full px-4 py-24 z-50">
         <div className="rounded max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
           <div className="max-w-[320px] mx-auto py-16">
-            <div className="text-3xl font-bold  ">Sign In</div>
+            <div className="text-3xl font-bold  ">Sign Up</div>
             <form className="w-full flex flex-col py-4">
               <input
                 onChange={(e) => setEmail(e.target.value)}
@@ -51,7 +51,7 @@ export default function SignUp() {
                 onClick={handleSubmit}
                 className="bg-red-600 text-white py-3 my-6 font-bold rounded-md"
               >
-                Sign In
+                Sign Up
               </button>
               <div className="flex justify-between items-center text-gray-600">
                 <p>
@@ -62,9 +62,12 @@ export default function SignUp() {
               </div>
 
               <p className="py-8">
-                <span className="text-gray-600 mr-2">New to Netflix?</span>
+                <span className="text-gray-600 mr-2">
+                  {" "}
+                  Already subscribed to Netflix?
+                </span>
 
-                <Link to="/signup">Sign Up</Link>
+                <Link to="/signup">Sign In</Link>
               </p>
             </form>
           </div>
