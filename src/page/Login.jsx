@@ -1,6 +1,26 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import UserAuth from "../context/AuthContext";
 
 export default function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const { user, logIn } = UserAuth();
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setError("");
+    try {
+      logIn(email, password);
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+      setError("Failed to sign in");
+    }
+  };
+
   return (
     <div className="w-full h-screen">
       <img
@@ -15,18 +35,23 @@ export default function Login() {
             <div className="text-3xl font-bold  ">Sign In</div>
             <form className="w-full flex flex-col py-4">
               <input
+                onChange={(e) => setEmail(e.target.value)}
                 type="email"
                 placeholder="Email"
                 autoComplete="email"
                 className="bg-gray-700 p-3 my-2 rounded"
               />
               <input
+                onChange={(e) => setPassword(e.target.value)}
                 type="password"
                 placeholder="Password"
                 autoComplete="current-password"
                 className="bg-gray-700 p-3 my-2 rounded"
               />
-              <button className="bg-red-600 text-white py-3 my-6 font-bold rounded-md">
+              <button
+                onClick={handleSubmit}
+                className="bg-red-600 text-white py-3 my-6 font-bold rounded-md"
+              >
                 Sign In
               </button>
               <div className="flex justify-between items-center text-gray-600">
