@@ -16,12 +16,12 @@ export default function RowComponent({ title, fetchURL, rowID }) {
 
   const slideLeft = () => {
     const slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft -= 500;
+    slider.scrollLeft -= 1000;
   };
 
   const slideRight = () => {
     const slider = document.getElementById("slider" + rowID);
-    slider.scrollLeft += 500;
+    slider.scrollLeft += 1000;
   };
 
   return (
