@@ -22,7 +22,11 @@ export default function NavBar() {
         </h1>
       </Link>
       {user?.email ? (
+<<<<<<< HEAD
         <div className="md:text-xl">
+=======
+        <div>
+>>>>>>> 73988f1eb4eb036267e3f4bfee8c1d3e79ec250d
           <Link to="/account">
             <button className="text-white pr-4  ">Account</button>
           </Link>
